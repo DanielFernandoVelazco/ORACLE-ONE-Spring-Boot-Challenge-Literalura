@@ -1,6 +1,6 @@
 package com.fernandovelazco.oracle;
 
-import com.fernandovelazco.oracle.principal.Principal;
+import com.fernandovelazco.oracle.service.ConsumoApi;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,7 +14,9 @@ public class LiteraturaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Principal principal = new Principal();
-		principal.showMenu();
+
+		var consumoApi = new ConsumoApi();
+		var json = consumoApi.obtenerDatos("https://gutendex.com/books");
+		System.out.println(json);
 	}
 }
